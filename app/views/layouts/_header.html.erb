@@ -1,0 +1,19 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container">
+        <%= link_to "News+", root_path, id: "logo" %>
+        <nav>
+            <ul class="nav navbar-nav navbar-left">
+                <li><%= link_to "Home",   root_path %></li>
+                <li><%= link_to "Drop down select",   root_path %></li>
+            </ul>
+            <ul id="profile" class="nav navbar-nav navbar-right">
+                <li><a><button type="button" class="btn btn-success">Log In</button></a></li>
+                <li>
+                    <%= link_to signup_path do %>
+                    <button type="button" class="btn btn-primary">Sign Up</button>
+                    <% end %>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
