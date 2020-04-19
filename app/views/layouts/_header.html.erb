@@ -7,13 +7,26 @@
                 <li><%= link_to "Drop down select",   root_path %></li>
             </ul>
             <ul id="profile" class="nav navbar-nav navbar-right">
-                <li><a><button type="button" class="btn btn-success">Log In</button></a></li>
+
+                <% if logged_in? %>
+                <li><%=link_to "Profile", current_user%></li>
+
+                <li><%= link_to "Log Out", logout_path, method: :delete %></li>
+
+                <% else %>
+                <li>
+                    <%= link_to login_path do %>
+                    <button type="button" class="btn btn-success">Log In</button>
+                    <% end %>
+                </li>
                 <li>
                     <%= link_to signup_path do %>
                     <button type="button" class="btn btn-primary">Sign Up</button>
                     <% end %>
                 </li>
+                <% end %>
             </ul>
+
         </nav>
     </div>
 </header>
