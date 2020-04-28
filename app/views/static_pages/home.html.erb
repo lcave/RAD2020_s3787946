@@ -1,15 +1,44 @@
-<section id="main" class="col span-2-of-3">
-    <nav>
-        <ul>
-            <li>Search</li>
-            <li>New Post</li>
-        </ul>
+<section id="main" class="col-sm-9">
+    <nav id="post-controls">
+        <div class="dropdown" style="width: 90px;">
+            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sort posts
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" href="#">Recent</a></li>
+                <li><a class="dropdown-item" href="#">Comments</a></li>
+                <li><a class="dropdown-item" href="#">Views</a></li>
+            </ul>
+        </div>
+        <div class="md-form active-cyan active-cyan-2 mb-3" style="width: 300px;">
+            <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+        </div>
+        <div style="float: right;">
+            <% if logged_in? %>
+            <button type="button" class="btn btn-success">New Post</button>
+            <% end %>
+        </div>
     </nav>
+    <hr />
+    <section>
+        Posts
+    </section>
 </section>
 
-<section id="aside" class="col span-1-of-3">
-    <section id="recent-members">
+<section id="aside" class="col-sm-3">
+    <section>
         <h3>Recent Members</h3>
+        <div class="row" id="recent-members">
+            <div class="recent-member">
+                Foo
+            </div>
+            <div class="recent-member">
+                Bar
+            </div>
+            <div class="recent-member">
+                Baz
+            </div>
+        </div>
     </section>
     <section id="topic">
         <h3>Topic</h3>

@@ -15,10 +15,7 @@ $gray-medium-light: #eaeaea;
 
 body {
   padding-top: 60px;
-}
-
-section {
-  overflow: auto;
+  background-color: lightgray;
 }
 
 textarea {
@@ -73,7 +70,6 @@ p {
   color: white;
   text-transform: uppercase;
   letter-spacing: -1px;
-  padding-top: 9px;
   font-weight: bold;
   &:hover {
     color: white;
@@ -88,26 +84,25 @@ p {
 /* footer */
 
 footer {
+  height: 56px;
   margin-top: 45px;
-  padding-top: 5px;
   border-top: 1px solid $gray-medium-light;
   color: $gray-light;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #333333;
+  color: whitesmoke;
+  text-align: center;
+  vertical-align: middle;
   a {
     color: $gray;
     &:hover {
       color: $gray-darker;
     }
   }
-  small {
-    float: left;
-  }
-  ul {
-    float: right;
-    list-style: none;
-    li {
-      float: left;
-      margin-left: 15px;
-    }
+  p {
+    margin: 15px;
   }
 }
 
@@ -196,4 +191,38 @@ input {
 #session_remember_me {
   width: auto;
   margin-left: 0;
+}
+
+/*frontpage*/
+
+#aside {
+  border-left: grey 1px;
+}
+
+#aside section > h3 {
+  margin-top: 0;
+}
+
+#recent-members {
+  display: flex;
+  margin: 0;
+  padding: 10px;
+}
+
+.recent-member {
+  width: 50px;
+  height: 50px;
+}
+
+#post-controls {
+  vertical-align: middle;
+}
+
+#post-controls div {
+  margin: 1px;
+  display: inline-block;
+  vertical-align: middle;
+  input {
+    margin: 0;
+  }
 }
