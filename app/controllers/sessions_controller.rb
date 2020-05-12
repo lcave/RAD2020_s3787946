@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       remember user
       params[:session][:remember_me] == "1" ? remember(user) : forget(user)
       flash[:success] = "Successfully logged in, welcome " + user.name
-      redirect_to root_path
+      redirect_back_or root_url
     else
       flash.now[:danger] = "Invalid email or password"
       render "new"
