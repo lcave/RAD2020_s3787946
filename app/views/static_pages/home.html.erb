@@ -1,3 +1,4 @@
+<%provide(:title,'All users')%>
 <section id="main" class="col-sm-9">
     <nav id="post-controls">
         <div class="dropdown" style="width: 90px;">
@@ -29,15 +30,11 @@
     <section>
         <h3>Recent Members</h3>
         <div class="row" id="recent-members">
+            <% @users.each do |user|%>
             <div class="recent-member">
-                Foo
+                <%= link_to user.name, user %>
             </div>
-            <div class="recent-member">
-                Bar
-            </div>
-            <div class="recent-member">
-                Baz
-            </div>
+            <%end%>
         </div>
     </section>
     <section id="topic">
