@@ -21,3 +21,7 @@ User.create!(name: "Baz",
              mobile: "0422222222",
              password: "password",
              password_confirmation: "password")
+
+Micropost.create!(content: "General Kenobi",
+                  user_id: 1,
+                  title: "Hello there")

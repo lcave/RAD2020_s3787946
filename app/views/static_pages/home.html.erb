@@ -21,7 +21,14 @@
     </nav>
     <hr />
     <section>
-        Posts
+        <% @posts.each do |post|%>
+        <div class="">
+            <%= link_to post.title, post %>
+            <%= @users.find(post.user_id).name%>
+            <%= post.created_at %>
+            <%= post.views %>
+        </div>
+        <%end%>
     </section>
 </section>
 
@@ -29,7 +36,7 @@
     <section>
         <h3>Recent Members</h3>
         <div class="row" id="recent-members">
-            <% @users.each do |user|%>
+            <% @users.order(created_at: :asc).last(6).each do |user|%>
             <div class="recent-member">
                 <%= link_to user.name, user %>
             </div>
