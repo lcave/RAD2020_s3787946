@@ -3,10 +3,23 @@
         <%= link_to "News+", root_path, id: "logo" %>
         <nav>
             <ul class="nav navbar-nav navbar-left">
-                <li><%= link_to "Home",   root_path %></li>
-                <li><%= link_to "Drop down select",   root_path %></li>
+                <li><%= link_to "Home", root_path %></li>
+                <li>
+                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <% if params[:topic].present? %>
+                        <%= params[:topic] %>
+                        <% else %>
+                        All posts
+                        <% end %>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <% @topics.each do |topic| %>
+                        <li><a class="dropdown-item" href="?topic=<%= topic %>"><%= topic %></a></li>
+                        <% end %>
+                    </ul>
+                </li>
             </ul>
-            <ul id="profile" class="nav navbar-nav navbar-right">
+            <ul id=" profile" class="nav navbar-nav navbar-right">
 
                 <% if logged_in? %>
                 <li class="dropdown">

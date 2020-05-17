@@ -2,12 +2,16 @@
     <nav id="post-controls">
         <div class="dropdown" style="width: 90px;">
             <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Sort posts
+                <% if params[:sort].present? %>
+                <%= params[:sort].capitalize %>
+                <% else %>
+                Recent
+                <% end %>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li><a class="dropdown-item" href="?sort=default">Recent</a></li>
-                <li><a class=" dropdown-item" href="?sort=comments">Comments</a></li>
-                <li><a class="dropdown-item" href="?sort=views">Views</a></li>
+                <%if(params[:sort].present?)%><li><a class="dropdown-item" href="/<%if(params[:topic].present?)%>?topic=<%= params[:topic]%><%end%>">Recent</a></li><%end%>
+                <%unless(params[:sort] == "comments")%><li><a class=" dropdown-item" href="/<%if(params[:topic].present?)%>?topic=<%= params[:topic]%><%end%>">Comments</a></li><%end%>
+                <%unless(params[:sort] == "views")%><li><a class="dropdown-item" href="?sort=views<%if(params[:topic].present?)%>&topic=<%= params[:topic]%><%end%>">Views</a></li><%end%>
             </ul>
         </div>
         <div class=" md-form active-cyan active-cyan-2 mb-3" style="width: 300px;">
