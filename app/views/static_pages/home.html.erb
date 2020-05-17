@@ -5,12 +5,12 @@
                 Sort posts
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li><a class="dropdown-item" href="#">Recent</a></li>
-                <li><a class="dropdown-item" href="#">Comments</a></li>
-                <li><a class="dropdown-item" href="#">Views</a></li>
+                <li><a class="dropdown-item" href="?sort=default">Recent</a></li>
+                <li><a class=" dropdown-item" href="?sort=comments">Comments</a></li>
+                <li><a class="dropdown-item" href="?sort=views">Views</a></li>
             </ul>
         </div>
-        <div class="md-form active-cyan active-cyan-2 mb-3" style="width: 300px;">
+        <div class=" md-form active-cyan active-cyan-2 mb-3" style="width: 300px;">
             <input class="form-control" type="text" placeholder="Search" aria-label="Search">
         </div>
         <div style="float: right;">
@@ -21,14 +21,28 @@
     </nav>
     <hr />
     <section>
-        <% @posts.each do |post|%>
-        <div class="">
-            <%= link_to post.title, post %>
-            <%= @users.find(post.user_id).name%>
-            <%= post.created_at %>
-            <%= post.views %>
-        </div>
-        <%end%>
+        <ul class="posts">
+            <% @posts.each do |post|%>
+            <li>
+                <div>
+                    <%= image_tag("placeholder.webp", size:"50") %>
+                </div>
+                <div>
+                    <div class="row">
+                        <%= link_to post.title, post %>
+                    </div>
+                    <div class="row">
+
+                        <%= @users.find(post.user_id).name%> |
+                        Views: <%= post.views %> |
+                        Comments: 0 |
+                        <%= post.created_at %>
+                    </div>
+                </div>
+            </li>
+            <%end%>
+        </ul>
+        <%= will_paginate @posts %>
     </section>
 </section>
 

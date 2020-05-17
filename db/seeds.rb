@@ -22,6 +22,8 @@ User.create!(name: "Baz",
              password: "password",
              password_confirmation: "password")
 
-Micropost.create!(content: "General Kenobi",
-                  user_id: 1,
-                  title: "Hello there")
+99.times do |n|
+  Micropost.create!(content: "General Kenobi",
+                    user_id: 1,
+                    title: "Hello there", views: 100 - n)
+end
