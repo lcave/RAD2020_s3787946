@@ -8,4 +8,18 @@
     <div class="row">
         <%= @post.content %>
     </div>
+    <h4>Comments</h4>
+
+    <% if logged_in?%>
+    <%= form_for [@story, Comment.new] do |f| %>
+    <%= f.text_area :body, placeholder: "Add a comment" %><br />
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :micropost_id, :value => @post.id %>
+    <%= f.submit "Add Comment" %>
+    <% end %>
+    <% end %>
+
+    <ul>
+        <%= render(partial: 'comments/comment', collection: @post.comments) %>
+    </ul>
 </div>

@@ -1,17 +1,35 @@
 <section id="main" class="col-sm-9">
     <nav id="post-controls">
-        <div class="dropdown" style="width: 90px;">
+        <div class="dropdown">
             <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <% if params[:sort].present? %>
+                <% if params[:sort] == "comment_count" %>
+                Comments
+                <% else %>
                 <%= params[:sort].capitalize %>
+                <% end %>
                 <% else %>
                 Recent
                 <% end %>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <%if(params[:sort].present?)%><li><a class="dropdown-item" href="/<%if(params[:topic].present?)%>?topic=<%= params[:topic]%><%end%>">Recent</a></li><%end%>
-                <%unless(params[:sort] == "comments")%><li><a class=" dropdown-item" href="/<%if(params[:topic].present?)%>?topic=<%= params[:topic]%><%end%>">Comments</a></li><%end%>
+                <%unless(params[:sort] == "comment_count")%><li><a class=" dropdown-item" href="/?sort=comment_count<%if(params[:topic].present?)%>&topic=<%= params[:topic]%><%end%>">Comments</a></li><%end%>
                 <%unless(params[:sort] == "views")%><li><a class="dropdown-item" href="?sort=views<%if(params[:topic].present?)%>&topic=<%= params[:topic]%><%end%>">Views</a></li><%end%>
+            </ul>
+        </div>
+        <div class="dropdown">
+            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <% if params[:topic].present? %>
+                <%= params[:topic] %>
+                <% else %>
+                All posts
+                <% end %>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <% @topics.each do |topic| %>
+                <li><a class="dropdown-item" href="?topic=<%= topic %>"><%= topic %></a></li>
+                <% end %>
             </ul>
         </div>
         <div class=" md-form active-cyan active-cyan-2 mb-3" style="width: 300px;">
@@ -39,7 +57,7 @@
 
                         <%= @users.find(post.user_id).name%> |
                         Views: <%= post.views %> |
-                        Comments: 0 |
+                        Comments: <%= post.comment_count %> |
                         <%= post.created_at %>
                     </div>
                 </div>
@@ -62,9 +80,25 @@
         </div>
     </section>
     <section id="topic">
-        <h3>Topic</h3>
+        <h3>Topics</h3>
     </section>
     <section id="pop-posts">
         <h3>Popular Posts</h3>
+        <ul class="posts">
+            <% Micropost.all.order(views: :desc).limit(6).each do |post|%>
+            <li>
+                <div>
+                    <div class="row">
+                        <%= link_to post.title, post %>
+                    </div>
+                    <div class="row">
+                        <%= @users.find(post.user_id).name%> |
+                        Views: <%= post.views %> |
+                        Comments: <%= post.comment_count %> |
+                    </div>
+                </div>
+            </li>
+            <%end%>
+        </ul>
     </section>
 </section>
