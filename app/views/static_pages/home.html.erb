@@ -1,47 +1,49 @@
-<section id="main" class="col-sm-9">
-    <nav id="post-controls">
-        <div class="dropdown">
-            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <% if params[:sort].present? %>
-                <% if params[:sort] == "comment_count" %>
-                Comments
-                <% else %>
-                <%= params[:sort].capitalize %>
+<section id="main" class="col-sm-8">
+    <div class="sticky-nav">
+        <nav id="post-controls">
+            <div class="dropdown">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <% if params[:sort].present? %>
+                    <% if params[:sort] == "comment_count" %>
+                    Comments
+                    <% else %>
+                    <%= params[:sort].capitalize %>
+                    <% end %>
+                    <% else %>
+                    Recent
+                    <% end %>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <%if(params[:sort].present?)%><li><a class="dropdown-item" href="/<%if(params[:topic].present?)%>?topic=<%= params[:topic]%><%end%>">Recent</a></li><%end%>
+                    <%unless(params[:sort] == "comment_count")%><li><a class=" dropdown-item" href="/?sort=comment_count<%if(params[:topic].present?)%>&topic=<%= params[:topic]%><%end%>">Comments</a></li><%end%>
+                    <%unless(params[:sort] == "views")%><li><a class="dropdown-item" href="?sort=views<%if(params[:topic].present?)%>&topic=<%= params[:topic]%><%end%>">Views</a></li><%end%>
+                </ul>
+            </div>
+            <div class="dropdown">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <% if params[:topic].present? %>
+                    <%= params[:topic] %>
+                    <% else %>
+                    All posts
+                    <% end %>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <% @topics.each do |topic| %>
+                    <li><a class="dropdown-item" href="?topic=<%= topic %>"><%= topic %></a></li>
+                    <% end %>
+                </ul>
+            </div>
+            <div class=" md-form active-cyan active-cyan-2 mb-3" style="width: 300px;">
+                <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+            </div>
+            <div style="float: right;">
+                <% if logged_in? %>
+                <button type="button" class="btn btn-success">New Post</button>
                 <% end %>
-                <% else %>
-                Recent
-                <% end %>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <%if(params[:sort].present?)%><li><a class="dropdown-item" href="/<%if(params[:topic].present?)%>?topic=<%= params[:topic]%><%end%>">Recent</a></li><%end%>
-                <%unless(params[:sort] == "comment_count")%><li><a class=" dropdown-item" href="/?sort=comment_count<%if(params[:topic].present?)%>&topic=<%= params[:topic]%><%end%>">Comments</a></li><%end%>
-                <%unless(params[:sort] == "views")%><li><a class="dropdown-item" href="?sort=views<%if(params[:topic].present?)%>&topic=<%= params[:topic]%><%end%>">Views</a></li><%end%>
-            </ul>
-        </div>
-        <div class="dropdown">
-            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <% if params[:topic].present? %>
-                <%= params[:topic] %>
-                <% else %>
-                All posts
-                <% end %>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <% @topics.each do |topic| %>
-                <li><a class="dropdown-item" href="?topic=<%= topic %>"><%= topic %></a></li>
-                <% end %>
-            </ul>
-        </div>
-        <div class=" md-form active-cyan active-cyan-2 mb-3" style="width: 300px;">
-            <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-        </div>
-        <div style="float: right;">
-            <% if logged_in? %>
-            <button type="button" class="btn btn-success">New Post</button>
-            <% end %>
-        </div>
-    </nav>
-    <hr />
+            </div>
+        </nav>
+        <hr />
+    </div>
     <section>
         <ul class="posts">
             <% @posts.each do |post|%>
@@ -55,10 +57,10 @@
                     </div>
                     <div class="row">
 
-                        <%= @users.find(post.user_id).name%> |
-                        Views: <%= post.views %> |
+                        <%= link_to @users.find(post.user_id).name, @users.find(post.user_id) %> |
+                        Views: <%= number_with_delimiter(post.views, :delimiter => ',') %> |
                         Comments: <%= post.comment_count %> |
-                        <%= post.created_at %>
+                        <%= time_ago_in_words(post.created_at) %> ago
                     </div>
                 </div>
             </li>
@@ -68,7 +70,7 @@
     </section>
 </section>
 
-<section id="aside" class="col-sm-3">
+<section id="aside" class="col-sm-4">
     <section>
         <h3>Recent Members</h3>
         <div class="row" id="recent-members">
@@ -92,9 +94,9 @@
                         <%= link_to post.title, post %>
                     </div>
                     <div class="row">
-                        <%= @users.find(post.user_id).name%> |
-                        Views: <%= post.views %> |
-                        Comments: <%= post.comment_count %> |
+                        <%= link_to @users.find(post.user_id).name, @users.find(post.user_id) %> |
+                        Views: <%= number_with_delimiter(post.views, :delimiter => ',') %> |
+                        Comments: <%= post.comment_count %>
                     </div>
                 </div>
             </li>

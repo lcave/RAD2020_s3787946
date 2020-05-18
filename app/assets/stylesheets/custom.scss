@@ -197,6 +197,9 @@ input {
 
 #aside {
   border-left: grey 1px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 60px;
 }
 
 #aside section > h3 {
@@ -214,6 +217,16 @@ input {
   height: 50px;
 }
 
+#main {
+  padding-right: 0;
+  padding-left: 0;
+  background-color: whitesmoke;
+  section {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+
 #post-controls {
   vertical-align: middle;
 }
@@ -227,13 +240,25 @@ input {
   }
 }
 
+.sticky-nav {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 50px;
+  background-color: white;
+  padding: 10px 10px 0 10px;
+}
+
 /* Front page posts */
 .posts {
   list-style: none;
   margin: 0;
+  padding-left: 0;
   li {
+    background-color: white;
     padding: 10px 0;
-    border-bottom: 1px solid $gray-lighter;
+    margin-bottom: 10px;
+    border: 1px solid #61afc579;
+    border-radius: 5px;
     vertical-align: middle;
   }
   li > div {
@@ -242,5 +267,192 @@ input {
   }
   div > div {
     padding-left: 20px;
+  }
+}
+
+#pop-posts {
+  .posts {
+    li {
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      border-bottom: 1px solid #eeeeee;
+    }
+  }
+}
+
+/* Comments */
+#comments-section {
+  div {
+    padding-top: 15px;
+    width: 50%;
+  }
+  li {
+    text-decoration: none;
+    b {
+      padding-right: 10px;
+    }
+  }
+  ul {
+    list-style: none;
+  }
+}
+
+/* Backgrounds */
+.animated-background {
+  background: linear-gradient(270deg, #187c99, #3b608c, #324b69, #202123);
+  background-size: 400% 400%;
+
+  -webkit-animation: backgroundGradient 16s ease infinite;
+  -moz-animation: backgroundGradient 16s ease infinite;
+  animation: backgroundGradient 16s ease infinite;
+  border: none;
+}
+
+#Joke {
+  background: linear-gradient(270deg, #550000, #413e35);
+  background-size: 400% 400%;
+
+  -webkit-animation: backgroundGradient 16s ease infinite;
+  -moz-animation: backgroundGradient 16s ease infinite;
+  animation: backgroundGradient 16s ease infinite;
+}
+#A\.I\. {
+  background: linear-gradient(270deg, #252247, #316799);
+  background-size: 400% 400%;
+
+  -webkit-animation: backgroundGradient 16s ease infinite;
+  -moz-animation: backgroundGradient 16s ease infinite;
+  animation: backgroundGradient 16s ease infinite;
+}
+#V\.R\. {
+  background: linear-gradient(270deg, #013c15, #008810);
+  background-size: 400% 400%;
+
+  -webkit-animation: backgroundGradient 16s ease infinite;
+  -moz-animation: backgroundGradient 16s ease infinite;
+  animation: backgroundGradient 16s ease infinite;
+}
+#RMIT {
+  background: linear-gradient(270deg, #a80000, #580000);
+  background-size: 400% 400%;
+
+  -webkit-animation: backgroundGradient 16s ease infinite;
+  -moz-animation: backgroundGradient 16s ease infinite;
+  animation: backgroundGradient 16s ease infinite;
+}
+#Game {
+  background: linear-gradient(270deg, #52004f, #8c007b);
+  background-size: 400% 400%;
+
+  -webkit-animation: backgroundGradient 16s ease infinite;
+  -moz-animation: backgroundGradient 16s ease infinite;
+  animation: backgroundGradient 16s ease infinite;
+}
+#Rails {
+  background: linear-gradient(270deg, #700031, #b90058);
+  background-size: 400% 400%;
+
+  -webkit-animation: backgroundGradient 16s ease infinite;
+  -moz-animation: backgroundGradient 16s ease infinite;
+  animation: backgroundGradient 16s ease infinite;
+}
+#Go {
+  background: linear-gradient(270deg, #015e5f, #029ca5);
+  background-size: 400% 400%;
+
+  -webkit-animation: backgroundGradient 16s ease infinite;
+  -moz-animation: backgroundGradient 16s ease infinite;
+  animation: backgroundGradient 16s ease infinite;
+}
+#Web {
+  background: linear-gradient(270deg, #000000, #363636);
+  background-size: 400% 400%;
+
+  -webkit-animation: backgroundGradient 16s ease infinite;
+  -moz-animation: backgroundGradient 16s ease infinite;
+  animation: backgroundGradient 16s ease infinite;
+}
+#M\.L {
+  background: linear-gradient(270deg, #0080b0, #a0a3a3);
+  background-size: 400% 400%;
+
+  -webkit-animation: backgroundGradient 16s ease infinite;
+  -moz-animation: backgroundGradient 16s ease infinite;
+  animation: backgroundGradient 16s ease infinite;
+}
+#React {
+  background: linear-gradient(270deg, #0593e3, #00d7e3);
+  background-size: 400% 400%;
+
+  -webkit-animation: backgroundGradient 16s ease infinite;
+  -moz-animation: backgroundGradient 16s ease infinite;
+  animation: backgroundGradient 16s ease infinite;
+}
+#Vue {
+  background: linear-gradient(270deg, #438148, #838383);
+  background-size: 400% 400%;
+
+  -webkit-animation: backgroundGradient 16s ease infinite;
+  -moz-animation: backgroundGradient 16s ease infinite;
+  animation: backgroundGradient 16s ease infinite;
+}
+#Node {
+  background: linear-gradient(270deg, #1a785b, #488700);
+  background-size: 400% 400%;
+
+  -webkit-animation: backgroundGradient 16s ease infinite;
+  -moz-animation: backgroundGradient 16s ease infinite;
+  animation: backgroundGradient 16s ease infinite;
+}
+#iOS {
+  background: linear-gradient(270deg, #03b1ce, #c6c854);
+  background-size: 400% 400%;
+
+  -webkit-animation: backgroundGradient 16s ease infinite;
+  -moz-animation: backgroundGradient 16s ease infinite;
+  animation: backgroundGradient 16s ease infinite;
+}
+
+#AWS {
+  background: linear-gradient(270deg, #dfbd00, #424663);
+  background-size: 400% 400%;
+
+  -webkit-animation: backgroundGradient 16s ease infinite;
+  -moz-animation: backgroundGradient 16s ease infinite;
+  animation: backgroundGradient 16s ease infinite;
+}
+
+@-webkit-keyframes backgroundGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@-moz-keyframes backgroundGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes backgroundGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }

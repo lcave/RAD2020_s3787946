@@ -22,14 +22,18 @@ User.create!(name: "Baz",
              password: "password",
              password_confirmation: "password")
 
-20.times do |n|
-  Micropost.create!(content: "General Kenobi",
-                    user_id: 1,
-                    title: "Hello there", views: 100 - n)
+users = []
+
+for user in User.all
+  users.append(user)
 end
 
-20.times do |n|
-  Micropost.create!(content: "General Kenobi",
-                    user_id: 1,
-                    title: "Hello there", views: 100 - n, topic: "Joke")
+topics = ["News", "A.I.", "V.R.", "RMIT", "Game", "Rails", "Go", "Web", "M.L", "Joke", "React", "Vue", "Node", "iOS", "AWS"]
+
+for topic in topics
+  rand(50).times do |n|
+    Micropost.create!(content: "General Kenobi",
+                      user_id: users.sample.id,
+                      title: "Hello there", views: rand(1000000), topic: topic)
+  end
 end

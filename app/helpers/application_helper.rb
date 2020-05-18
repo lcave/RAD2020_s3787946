@@ -11,4 +11,8 @@ module ApplicationHelper
   def topics
     topics = ["News", "A.I.", "V.R.", "RMIT", "Game", "Rails", "Go", "Web", "M.L", "Joke", "React", "Vue", "Node", "iOS", "AWS"]
   end
+
+  def setTopic(topic)
+    session[:topic] = topic
+  end
 end

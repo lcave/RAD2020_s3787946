@@ -8,18 +8,27 @@
     <div class="row">
         <%= @post.content %>
     </div>
-    <h4>Comments</h4>
+    <div class="row" id="comments-section">
+        <h4>Comments</h4>
 
-    <% if logged_in?%>
-    <%= form_for [@story, Comment.new] do |f| %>
-    <%= f.text_area :body, placeholder: "Add a comment" %><br />
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-    <%= f.hidden_field :micropost_id, :value => @post.id %>
-    <%= f.submit "Add Comment" %>
-    <% end %>
-    <% end %>
+        <% if logged_in?%>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#commentCollapse" aria-expanded="false" aria-controls="collapseExample">
+            Add comment
+        </button>
 
-    <ul>
-        <%= render(partial: 'comments/comment', collection: @post.comments) %>
-    </ul>
+        <div class="collapse" id="commentCollapse">
+            <%= form_for [@story, Comment.new] do |f| %>
+            <%= f.text_area :body, placeholder: "Add a comment" %><br />
+            <%= f.hidden_field :user_id, :value => current_user.id %>
+            <%= f.hidden_field :micropost_id, :value => @post.id %>
+            <%= f.submit "Add Comment" %>
+            <% end %>
+            <% end %>
+        </div>
+        <ul>
+            <hr />
+            <%= render(partial: 'comments/comment', collection: @post.comments) %>
+            <hr />
+        </ul>
+    </div>
 </div>

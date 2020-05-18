@@ -10,6 +10,8 @@ class CommentsController < ApplicationController
 
     if @comment.save
       redirect_back fallback_location: root_path
+      count = Micropost.find_by_id(params[:comment][:micropost_id]).comment_count
+      Micropost.find_by_id(params[:comment][:micropost_id]).update(comment_count: count + 1)
     end
   end
 
@@ -20,10 +22,9 @@ class CommentsController < ApplicationController
   end
 
   def find_commentable
-    @commentable = Comment.find_by_id(params[:comment][:comment_id]) if params[:comment][:comment_id]
-    if params[:comment][:micropost_id]
-      @commentable = Micropost.find_by_id(params[:comment][:micropost_id])
-      @commentable.update(comment_count: +1)
+    @commentable = Micropost.find_by_id(params[:comment][:micropost_id])
+    if params[:comment][:comment_id]
+      @commentable = Comment.find_by_id(params[:comment][:comment_id]) if params[:comment][:comment_id]
     end
   end
 end

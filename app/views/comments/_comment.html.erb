@@ -1,17 +1,24 @@
 <li>
-    <%= comment.body %> - <%= User.find_by_id(comment.user_id).name%>
-    <small>Submitted <%= time_ago_in_words(comment.created_at) %> ago</small>
+    <b><%= User.find_by_id(comment.user_id).name%></b><small> <%= time_ago_in_words(comment.created_at) %> ago</small><br>
+    <%= comment.body %> <br>
 
     <% if logged_in? %>
-    <%= form_for [comment, Comment.new] do |f| %>
-    <%= f.text_area :body, placeholder: "Add a Reply" %><br />
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-    <%= f.hidden_field :comment_id, :value => comment.id %>
-    <%= f.submit "Reply"  %>
-    <% end %>
-    <% end %>
-
+    <a data-toggle="collapse" href="#replyCollapse<%= comment.id %>" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Reply
+    </a>
+    <div class="collapse" id="replyCollapse<%= comment.id %>">
+        <%= form_for [comment, Comment.new] do |f| %>
+        <%= f.text_area :body, placeholder: "Add a Reply" %><br />
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= f.hidden_field :micropost_id, :value => @post.id %>
+        <%= f.hidden_field :comment_id, :value => comment.id %>
+        <%= f.submit "Reply"  %>
+        <% end %>
+        <% end %>
+    </div>
     <ul>
+
+        <hr />
         <%= render partial: 'comments/comment', collection: comment.comments %>
     </ul>
 
