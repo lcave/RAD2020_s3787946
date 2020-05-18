@@ -52,8 +52,8 @@
                     <%= image_tag("placeholder.webp", size:"50") %>
                 </div>
                 <div>
-                    <div class="row">
-                        <%= link_to post.title, post %>
+                    <div class="row" style="max-width: 510px;">
+                        <b><%= link_to post.title, post %></b>
                     </div>
                     <div class="row">
 
@@ -91,7 +91,7 @@
             <li>
                 <div>
                     <div class="row">
-                        <%= link_to post.title, post %>
+                        <b><%= link_to post.title, post %></b>
                     </div>
                     <div class="row">
                         <%= link_to @users.find(post.user_id).name, @users.find(post.user_id) %> |
