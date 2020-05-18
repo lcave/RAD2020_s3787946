@@ -63,6 +63,27 @@ p {
 
 /* header */
 
+header {
+  height: 64px;
+  padding-top: 8px;
+}
+
+.navbar-nav {
+  li {
+    a {
+      padding-top: 6px;
+    }
+    .dropdown-toggle {
+      padding-top: 15px;
+    }
+    .dropdown-toggle:focus {
+      background-color: #2b3547 !important;
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
+    }
+  }
+}
+
 #logo {
   float: left;
   margin-right: 30px;
@@ -199,7 +220,7 @@ input {
   border-left: grey 1px;
   position: -webkit-sticky;
   position: sticky;
-  top: 60px;
+  top: 70px;
 }
 
 #aside section > h3 {
@@ -243,7 +264,7 @@ input {
 .sticky-nav {
   position: -webkit-sticky;
   position: sticky;
-  top: 50px;
+  top: 60px;
   background-color: white;
   padding: 10px 10px 0 10px;
 }
