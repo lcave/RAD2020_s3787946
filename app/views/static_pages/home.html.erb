@@ -29,7 +29,9 @@
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <% @topics.each do |topic| %>
+                    <% if params[:topic] != topic %>
                     <li><a class="dropdown-item" href="?topic=<%= topic %>"><%= topic %></a></li>
+                    <% end %>
                     <% end %>
                 </ul>
             </div>

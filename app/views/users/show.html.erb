@@ -1,16 +1,44 @@
 <%provide(:title,@user.name)%>
-<div class="container">
-    <div class="row">
-        <h1>
-            <%=@user.name%>
-        </h1>
+
+<div style="display:flex;min-height:360px;">
+    <div class="col-sm-3 vertical-nav">
+        <ul>
+            <li>
+                <a class="dropdown-item" href="?section">My Profile</a>
+            </li>
+            <li>
+                <a class="dropdown-item" href="?section=posts">My Posts</a>
+            </li>
+            <li>
+                <a class="dropdown-item" href="?section=comments">My Comments</a>
+            </li>
+            <li>
+                <a class="dropdown-item" href="?section=replies">Replies to Me</a>
+            </li>
+            <li>
+                <a class="dropdown-item" href="?section=settings">Settings</a>
+            </li>
+        </ul>
     </div>
-    <div class="row">
-        <div class="col">
-            Recent Posts
-        </div>
-        <div class="col">
-            Recent Comments
-        </div>
+    <div class=" col-sm-8">
+        <% if !params[:section].present? %>
+        <%= render 'profile'%>
+        <% end %>
+
+        <% if params[:section] == "posts" %>
+        <%= render 'posts'%>
+        <% end %>
+
+        <% if params[:section] == "comments" %>
+        <%= render 'comments'%>
+        <% end %>
+
+        <% if params[:section] == "replies" %>
+        <%= render 'replies'%>
+        <% end %>
+
+        <% if params[:section] == "settings" %>
+        <%= render 'edit' %>
+        <% end %>
     </div>
 </div>

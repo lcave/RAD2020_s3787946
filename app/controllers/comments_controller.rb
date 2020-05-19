@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  attr_accessor :commentable_id
   before_action :find_commentable
 
   def new

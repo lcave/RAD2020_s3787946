@@ -30,3 +30,25 @@ for topic in topics
                       title: Faker::Lorem.sentence(word_count: rand(2..15)), views: rand(1000000), topic: topic)
   end
 end
+
+Micropost.all.each do |post|
+  rand(0..10).times do
+    Comment.create!(body: Faker::Lorem.sentence(word_count: rand(2..15)),
+                    user_id: users.sample.id,
+                    commentable: post)
+    count = post.comment_count
+    post.update(comment_count: count + 1)
+  end
+end
+
+Comment.all.each do |comment|
+  rand(0..2).times do
+    Comment.create!(body: Faker::Lorem.sentence(word_count: rand(2..15)),
+                    user_id: users.sample.id,
+                    commentable: comment)
+    count = Micropost.find_by_id(comment.commentable_id).comment_count
+    if Micropost.find_by_id(comment.commentable_id)
+      Micropost.find_by_id(comment.commentable_id).update(comment_count: count + 1)
+    end
+  end
+end

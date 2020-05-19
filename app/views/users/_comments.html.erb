@@ -1,0 +1,21 @@
+<h3>My Comments</h3>
+<ul class="posts">
+    <% @comments.each do |comment| %>
+    <li>
+        <div>
+            <div class="row" style="max-width: 510px;">
+
+                <% if Micropost.find_by_id(comment.commentable_id) %>
+                <b>
+                    <%= link_to Micropost.find_by_id(comment.commentable_id).title, Micropost.find_by_id(comment.commentable_id) %>
+                </b>
+                <% end %>
+            </div>
+            <div class="row">
+                "<em><%=comment.body%></em>"
+            </div>
+        </div>
+    </li>
+    <% end %>
+    <%= will_paginate @posts %>
+</ul>
