@@ -74,7 +74,7 @@ header {
       padding-top: 6px;
     }
     .dropdown-toggle {
-      padding-top: 15px;
+      padding-top: 13px;
     }
     .dropdown-toggle:focus {
       background-color: #2b3547 !important;
@@ -82,6 +82,14 @@ header {
       border-top-left-radius: 5px;
     }
   }
+}
+
+.nav .dropdown {
+  display: inline;
+}
+
+#site {
+  margin-top: 6px;
 }
 
 #logo {

@@ -2,8 +2,21 @@
     <div class="container">
         <%= link_to "News+", root_path, id: "logo" %>
         <nav>
-            <ul id=" profile" class="nav navbar-nav navbar-right">
+            <ul id="site" class="nav navbar-nav navbar-left">
+                <li><%= link_to "Home", root_path %></li>
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Hot Topics
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <% 2.times do |i|%>
+                        <% topic = params[:top_topics][i][0]%>
 
+                        <li><a class="dropdown-item" href="?topic=<%= topic %>"><%= topic %></a></li>
+                        <% end %>
+                    </ul>
+            </ul>
+            <ul id="profile" class="nav navbar-nav navbar-right">
                 <% if logged_in? %>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
