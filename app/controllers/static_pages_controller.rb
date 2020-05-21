@@ -9,7 +9,10 @@ class StaticPagesController < ApplicationController
       order = "created_at"
     end
 
-    if params[:topic].present?
+    if params[:query].present?
+      @posts = Micropost.where("lower(content) LIKE lower(?) or lower(title) LIKE lower(?)",
+                               "%#{params[:query]}%", "%#{params[:query]}%").order(order + " DESC").paginate(page: params[:page], per_page: 20)
+    elsif params[:topic].present?
       @posts = Micropost.where(topic: params[:topic]).order(order + " DESC").paginate(page: params[:page], per_page: 20)
     else
       @posts = Micropost.order(order + " DESC").paginate(page: params[:page], per_page: 20)

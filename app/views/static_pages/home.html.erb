@@ -35,9 +35,15 @@
                     <% end %>
                 </ul>
             </div>
-            <div class=" md-form active-cyan active-cyan-2 mb-3" style="width: 300px;">
-                <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-            </div>
+            <form style="display:inline;">
+                <div class=" md-form active-cyan active-cyan-2 mb-3" style="width: 300px;">
+                    <input class="form-control" type="text" name="query" placeholder="Search" aria-label="Search">
+                </div>
+            </form>
+            <% if params[:topic].present? or params[:query].present? %>
+            <a href="/" style="padding-left:5px;"> Reset </a>
+            <% end %>
+
             <div style="float: right;">
                 <% if logged_in? %>
                 <a href="microposts/new"><button type="button" class="btn btn-success">New Post</button></a>
