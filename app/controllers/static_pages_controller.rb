@@ -2,7 +2,6 @@ class StaticPagesController < ApplicationController
   def home
     @users = User.all
     @topics = topics
-    params[:top_topics] = top_topics
 
     if (params[:sort].present?)
       order = params[:sort]
