@@ -1,0 +1,20 @@
+<script>
+    document.addEventListener("trix-file-accept", function(event) {
+        event.preventDefault();
+    });
+</script>
+
+<%= form_for( @post) do |f| %>
+
+<div style="width:50%;display:inline-block;">
+    <%=f.label :title%>
+    <%=f.text_field :title, class: 'form-control'%>
+</div>
+<div class="post-select" style="display: inline-block;">
+    <%= select("micropost", "topic", topics, { selected: "News"}) %>
+</div>
+
+<%= f.trix_editor :content %>
+
+<%=f.submit"Create post",class:"btn btn-primary"%>
+<% end %>
