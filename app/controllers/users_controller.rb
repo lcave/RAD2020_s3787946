@@ -8,8 +8,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.verification = Verification.new(name: @user.name, user_id: @user.id)
     if @user.save
+      Verification.create!(name: @user.name, user_id: @user.id)
       flash[:success] = "Welcome to News+"
       log_in @user
       redirect_to root_path

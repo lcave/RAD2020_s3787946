@@ -1,18 +1,20 @@
-User.create!(name: "RAD",
-             email: "example@rad2020.org",
-             mobile: "0422222222",
-             password: "Rails2020",
-             password_confirmation: "Rails2020")
+rad = User.create!(name: "RAD",
+                   email: "example@rad2020.org",
+                   mobile: "0422222222",
+                   password: "Rails2020",
+                   password_confirmation: "Rails2020")
+Verification.create!(name: rad.name, user_id: rad.id)
 
 50.times do |n|
   name = Faker::Name.name
   email = Faker::Internet.email()
   password = "password"
-  User.create!(name: name,
-               email: email,
-               password: password,
-               mobile: "0422222222",
-               password_confirmation: password)
+  user = User.create!(name: name,
+                      email: email,
+                      password: password,
+                      mobile: "0422222222",
+                      password_confirmation: password)
+  Verification.create!(name: name, user_id: user.id)
 end
 
 users = []

@@ -67,7 +67,7 @@
                 <%= f.hidden_field :user_id, :value => @user.id %>
 
                 <%= f.label "Name on card"%>
-                <%= f.text_field :name, value: @user.name, class: 'form-control'%>
+                <%= f.text_field :name, value: @user.verification.name, class: 'form-control'%>
 
                 <%= f.label "Card number"%>
                 <%= f.text_field :number, class: 'form-control'%>
