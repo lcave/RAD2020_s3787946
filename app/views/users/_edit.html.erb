@@ -46,17 +46,11 @@
                 <%end%>
             </div>
             <div class="tab-pane fade" id="avatar" role="tabpanel" aria-labelledby="avatar-tab">
-                <%=form_for(@user) do |f|%>
-                <%= render 'shared/error_messages'%>
 
-                <%=f.label "Profile Picture"%>
-                <%= f.file_field :image %>
-
-                <%=f.submit"Save changes",class:"btn btn-primary"%>
-                <%end%>
             </div>
             <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
                 <%=form_for(@user) do |f|%>
+                <%= render 'shared/error_messages'%>
 
                 <%=f.label :password%>
                 <%=f.password_field :password, class: 'form-control'%>
@@ -68,7 +62,31 @@
                 <%end%>
             </div>
             <div class="tab-pane fade" id="verification" role="tabpanel" aria-labelledby="verification-tab">
-                Vertification
+                <%= form_for(@user.verification, url: new_user_verification_path(@user, @user.verification)) do |f|%>
+                <%= render 'shared/error_messages'%>
+                <%= f.hidden_field :user_id, :value => @user.id %>
+
+                <%= f.label "Name on card"%>
+                <%= f.text_field :name, value: @user.name, class: 'form-control'%>
+
+                <%= f.label "Card number"%>
+                <%= f.text_field :number, class: 'form-control'%>
+
+                <label for="verification_image" class="file-upload">
+                    <%= fa_icon "upload" %> Upload
+                </label>
+                <%= f.file_field :image %>
+
+                <% if @user.verification.image != nil%>
+
+                <div id="verification-wrapper">
+                    <img src="<%= @user.verification.image%>">
+                </div>
+
+                <% end %>
+
+                <%=f.submit"Save changes",class:"btn btn-primary"%>
+                <%end%>
             </div>
         </div>
     </div>

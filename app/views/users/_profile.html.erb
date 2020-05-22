@@ -9,7 +9,7 @@
         <h4>Recent Posts</h4>
         <ul class="posts">
             <% @posts.limit(5).each do |post| %>
-            <li>
+            <li style="padding:10px;">
                 <div>
                     <div class="row" style="max-width: 510px;">
                         <b><%= link_to post.title, post %></b>
@@ -28,8 +28,8 @@
         <h4>Recent Comments</h4>
         <ul class="posts">
             <% @comments.limit(5).each do |comment| %>
-            <li>
-                <div>
+            <li style="padding:10px;">
+                <div style="padding:10px;">
                     <div class="row" style="max-width: 510px;">
                         <b><%= link_to Micropost.find_by_id(comment.commentable_id).title, Micropost.find_by_id(comment.commentable_id) %></b>
                     </div>

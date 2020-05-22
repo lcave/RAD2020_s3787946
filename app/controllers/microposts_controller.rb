@@ -14,7 +14,7 @@ class MicropostsController < ApplicationController
 
   def show
     @post = Micropost.find(params[:id])
-    @post.update(views: +1)
+    @post.update(views: @post.views + 1)
   end
 
   def index

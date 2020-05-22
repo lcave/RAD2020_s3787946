@@ -4,23 +4,23 @@
     <div class="col-sm-3 vertical-nav">
         <ul>
             <li>
-                <a class="dropdown-item" href="?section">My Profile</a>
+                <a class="dropdown-item" href="?section"><%= fa_icon "user" %> My Profile</a>
             </li>
             <li>
-                <a class="dropdown-item" href="?section=posts">My Posts</a>
+                <a class="dropdown-item" href="?section=posts"><%= fa_icon "columns" %> My Posts</a>
             </li>
             <li>
-                <a class="dropdown-item" href="?section=comments">My Comments</a>
+                <a class="dropdown-item" href="?section=comments"><%= fa_icon "comment" %> My Comments</a>
             </li>
             <li>
-                <a class="dropdown-item" href="?section=replies">Replies to Me</a>
+                <a class="dropdown-item" href="?section=replies"><%= fa_icon "reply" %> Replies to Me</a>
             </li>
             <li>
-                <a class="dropdown-item" href="?section=settings">Settings</a>
+                <a class="dropdown-item" href="?section=settings"><%= fa_icon "cog" %> Settings</a>
             </li>
         </ul>
     </div>
-    <div class=" col-sm-8">
+    <div class=" col-sm-9">
         <% if !params[:section].present? %>
         <%= render 'profile'%>
         <% end %>
