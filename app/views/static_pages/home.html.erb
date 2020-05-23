@@ -56,9 +56,7 @@
         <ul class="posts">
             <% @posts.each do |post|%>
             <li>
-                <div>
-                    <%= image_tag("placeholder.webp", size:"50") %>
-                </div>
+                <%=gravatar_for(@users.find(post.user_id), 50)%>
                 <div>
                     <div class="row" style="max-width: 510px;">
                         <b><%= link_to post.title, post %></b>

@@ -187,8 +187,8 @@ aside {
   }
 }
 .gravatar {
-  float: left;
-  margin-right: 10px;
+  border-radius: 5px;
+  margin: 0 10px;
 }
 .gravatar_edit {
   margin-top: 15px;
@@ -240,6 +240,12 @@ input {
 .edit_user .btn-primary,
 .edit_verification .btn-primary {
   width: 120px;
+}
+
+.edit_user .gravatar {
+  display: block;
+  margin-bottom: 15px;
+  margin-left: 0;
 }
 
 #verification-wrapper {

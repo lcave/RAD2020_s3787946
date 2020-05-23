@@ -46,7 +46,15 @@
                 <%end%>
             </div>
             <div class="tab-pane fade" id="avatar" role="tabpanel" aria-labelledby="avatar-tab">
+                <%=form_for(@user) do |f|%>
+                <%= render 'shared/error_messages'%>
 
+                <%=gravatar_for(@user)%>
+
+                <%=f.label "Update Gravatar Email"%>
+                <%=f.email_field (:gravatar), class: 'form-control'%>
+                <%=f.submit"Save changes",class:"btn btn-primary"%>
+                <%end%>
             </div>
             <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
                 <%=form_for(@user) do |f|%>

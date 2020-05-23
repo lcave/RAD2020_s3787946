@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200522091854) do
+ActiveRecord::Schema.define(version: 20200523010253) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20200522091854) do
     t.string "password_confirmation"
     t.string "password_digest"
     t.string "remember_digest"
+    t.string "gravatar"
   end
 
   create_table "verifications", force: :cascade do |t|
