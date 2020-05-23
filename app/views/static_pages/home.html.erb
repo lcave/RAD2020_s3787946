@@ -90,6 +90,14 @@
     </section>
     <section id="topic">
         <h3>Topics</h3>
+        <ul class="ul-flex">
+            <% @topics.each do |topic|%>
+            <a class="dropdown-item" href="?topic=<%= topic %>">
+                <li <% if params[:topic] == topic %> id="<%=params[:topic]%>" class="selected" <%end%>"><%= topic %>
+                </li>
+            </a>
+            <%end %>
+        </ul>
     </section>
     <section id="pop-posts">
         <h3>Popular Posts</h3>
