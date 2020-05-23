@@ -35,6 +35,7 @@ gem 'bootstrap-will_paginate'
 gem 'faker'
 gem 'carrierwave'
 gem 'font-awesome-rails'
+gem 'trix'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

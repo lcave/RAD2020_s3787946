@@ -1,5 +1,5 @@
 <%provide(:title,@user.name)%>
-
+<% @colsize = 12%>
 <div style="display:flex;min-height:360px;">
     <% if current_user == @user %>
     <% @colsize = 9 %>
@@ -23,7 +23,7 @@
         </ul>
     </div>
     <% end %>
-    <div class="col-sm-<%=@colsize%>;" style="<%if current_user != @user %> <%="margin-left:30px;"%><%end%>">
+    <div class="col-sm-<%=@colsize%>">
         <% if !params[:section].present? %>
         <%= render 'profile'%>
         <% end %>

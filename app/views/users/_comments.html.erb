@@ -4,12 +4,9 @@
     <li>
         <div>
             <div class="row" style="max-width: 510px;">
-
-                <% if Micropost.find_by_id(comment.commentable_id) %>
                 <b>
-                    <%= link_to Micropost.find_by_id(comment.commentable_id).title, Micropost.find_by_id(comment.commentable_id) %>
+                    <%= link_to comment.get_parent_post.title, comment.get_parent_post %>
                 </b>
-                <% end %>
             </div>
             <div class="row">
                 "<em><%=comment.body%></em>"

@@ -1,5 +1,5 @@
 <li>
-    <b><%= User.find_by_id(comment.user_id).name%></b><small> <%= time_ago_in_words(comment.created_at) %> ago</small><br>
+    <b><%= link_to User.find_by_id(comment.user_id).name, User.find_by_id(comment.user_id)%></b><small> <%= time_ago_in_words(comment.created_at) %> ago</small><br>
     <%= comment.body %> <br>
 
     <% if logged_in? %>

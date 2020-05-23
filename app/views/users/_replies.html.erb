@@ -4,10 +4,10 @@
     <li>
         <div style="padding-left:20px;">
             <div class="row">
-                <b style="padding-right: 15px;"><%= User.find_by_id(comment.user_id).name%>: </b> "<em><%=comment.body%></em>"
+                <b style="padding-right: 15px;"><%= link_to User.find_by_id(comment.user_id).name, User.find_by_id(comment.user_id)%>: </b> "<em><%=comment.body%></em>"
             </div>
             <div class="row" style="max-width: 510px;">
-                <%= link_to "Context", Micropost.find_by_id(comment.commentable_id) %>
+                <%= link_to "Post", Micropost.find_by_id(comment.commentable_id) %>
             </div>
         </div>
     </li>
@@ -23,10 +23,12 @@
                 <%= User.find_by_id(Comment.find_by_id(reply.commentable_id).user_id).name%>: <em>"<%= Comment.find_by_id(reply.commentable_id).body %>"</em>
             </div>
             <div class="row" style="padding-left:70px;">
-                <b style="padding: 0 15px 0 15px;"><%= User.find_by_id(reply.user_id).name%>: </b> "<em><%=reply.body%></em>"
+                <b style="padding: 0 15px 0 15px;"><%= link_to User.find_by_id(reply.user_id).name, User.find_by_id(reply.user_id)%>: </b> "<em><%=reply.body%></em>"
+            </div>
+            <div class="row" style="padding-left:40px;">
+                <%= link_to "Post", reply.get_parent_post %>
             </div>
         </div>
     </li>
     <% end %>
-    <%= will_paginate @posts %>
 </ul>

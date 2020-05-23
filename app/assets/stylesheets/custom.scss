@@ -466,6 +466,9 @@ h5 {
 .trix-content {
   min-height: 500px;
   height: auto;
+  h1 {
+    font-size: 3em !important;
+  }
 }
 
 .trix-button-group--file-tools {
