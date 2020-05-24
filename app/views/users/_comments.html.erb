@@ -8,8 +8,8 @@
                     <%= link_to comment.get_parent_post.title, comment.get_parent_post %>
                 </b>
             </div>
-            <div class="row">
-                "<em><%=comment.body.html_safe%></em>"
+            <div class="row comment">
+                <div class="comment-body">"<%=comment.body.html_safe%>"</div>
             </div>
             <%= link_to "Delete comment", comment, method: :delete, data: {confirm: "You sure?"} %>
         </div>

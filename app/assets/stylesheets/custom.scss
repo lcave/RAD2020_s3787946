@@ -405,6 +405,17 @@ input {
   }
 }
 
+.comment {
+  .comment-body {
+    div {
+      display: inline;
+      padding-top: 0;
+      padding: 0;
+      width: auto;
+    }
+  }
+}
+
 /* Profile page */
 .posts-col {
   width: 50%;

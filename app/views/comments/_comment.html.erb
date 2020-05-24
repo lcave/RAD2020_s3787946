@@ -1,4 +1,4 @@
-<li>
+<li class="comment">
     <b>
         <% if comment.user_id == 0%>
         <%= comment.author_name %>
@@ -6,7 +6,9 @@
         <%= link_to comment.author_name, User.find_by_id(comment.user_id) %>
         <% end %>
     </b><small> <%= time_ago_in_words(comment.created_at) %> ago</small><br>
-    <%= comment.body.html_safe %> <br>
+    <div class="comment-body">
+        <%= comment.body.html_safe %>
+    </div> <br>
 
     <% if logged_in? %>
     <a data-toggle="collapse" href="#replyCollapse<%= comment.id %>" role="button" aria-expanded="false" aria-controls="collapseExample">
