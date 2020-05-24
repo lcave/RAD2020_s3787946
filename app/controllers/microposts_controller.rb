@@ -32,10 +32,12 @@ class MicropostsController < ApplicationController
 
   private
 
+  # Define allowed parameters
   def micropost_params
     params.require(:micropost).permit(:title, :topic, :content)
   end
 
+  # Check whether user is logged in
   def logged_in_user
     unless logged_in?
       store_location

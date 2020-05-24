@@ -1,7 +1,6 @@
 <header class="navbar navbar-fixed-top navbar-inverse animated-background" <%if(params[:topic].present?)%> id="<%=params[:topic]%>" <%end%>>
     <div class="container">
         <%= link_to "News+", root_path, id: "logo" %>
-
         <div class="vertical-centered navlink">
             <ul id="site" class="nav navbar-nav navbar-left">
                 <li class="dropdown" style="margin-right:30px;">
@@ -12,9 +11,8 @@
                         <b>Hot Topics<b class="caret"></b></b></a>
                     <ul class="dropdown-menu">
                         <% 2.times do |i|%>
-                        <% topic = @hot_topics[i][0]%>
-
-                        <li><a class="dropdown-item" href="?topic=<%= topic %>"><%= topic %></a></li>
+                            <% topic = @hot_topics[i][0]%>
+                            <li><a class="dropdown-item" href="?topic=<%= topic %>"><%= topic %></a></li>
                         <% end %>
                     </ul>
                 </li>
@@ -23,34 +21,32 @@
         <div class="vertical-centered navlink">
             <ul id="profile" class="nav navbar-nav navbar-right">
                 <% if logged_in? %>
-                <li>
-                    <%=gravatar_for(current_user, 40)%>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <b> <%= current_user.name %> <b class="caret"></b></b></a>
-                    <ul class="dropdown-menu">
-                        <li><%= link_to "Profile", current_user%></li>
-                        <li><a href="/users/<%= current_user.id %>?section=settings">Settings</a></li>
-                        <li class="divider"></li>
-                        <li><%= link_to "Log out", logout_path, method: :delete%></li>
-                    </ul>
-                </li>
+                    <li>
+                        <%=gravatar_for(current_user, 40)%>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <b> <%= current_user.name %> <b class="caret"></b></b></a>
+                        <ul class="dropdown-menu">
+                            <li><%= link_to "Profile", current_user%></li>
+                            <li><a href="/users/<%= current_user.id %>?section=settings">Settings</a></li>
+                            <li class="divider"></li>
+                            <li><%= link_to "Log out", logout_path, method: :delete%></li>
+                        </ul>
+                    </li>
                 <% else %>
-                <li>
-                    <%= link_to login_path do %>
-                    <button type="button" class="btn btn-success">Log In</button>
-                    <% end %>
-                </li>
-                <li>
-                    <%= link_to signup_path do %>
-                    <button type="button" class="btn btn-primary">Sign Up</button>
-                    <% end %>
-                </li>
+                    <li>
+                        <%= link_to login_path do %>
+                        <button type="button" class="btn btn-success">Log In</button>
+                        <% end %>
+                    </li>
+                    <li>
+                        <%= link_to signup_path do %>
+                        <button type="button" class="btn btn-primary">Sign Up</button>
+                        <% end %>
+                    </li>
                 <% end %>
             </ul>
         </div>
-
-
     </div>
 </header>

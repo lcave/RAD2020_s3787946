@@ -28,16 +28,19 @@ class CommentsController < ApplicationController
 
   private
 
+  # Check whether current user is the same as the comment author
   def correct_user
     @comment = Comment.find_by_id(params[:id])
     @user = User.find_by_id(@comment.user_id)
     redirect_to(root_url) unless current_user?(@user)
   end
 
+  # Define allowed parameters
   def comment_params
     params.require(:comment).permit(:body, :user_id)
   end
 
+  # Find the object (post or comment) which this comment replies to 
   def find_commentable
     @commentable = Micropost.find_by_id(params[:comment][:micropost_id])
     if params[:comment][:comment_id]

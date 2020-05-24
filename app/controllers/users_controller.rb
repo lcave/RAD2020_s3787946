@@ -20,6 +20,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    if params[:section].present?
+      correct_user
+    end
 
     @posts = Micropost.where(user_id: @user.id).order("created_at DESC").paginate(page: params[:page], per_page: 20)
     @comments = Comment.where(user_id: @user.id).order("created_at DESC").paginate(page: params[:page], per_page: 20)

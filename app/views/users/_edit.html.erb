@@ -31,73 +31,71 @@
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade" id="personal-info" role="tabpanel" aria-labelledby="personal-info-tab">
                 <%=form_for(@user) do |f|%>
-                <%= render 'shared/error_messages'%>
+                    <%= render 'shared/error_messages'%>
 
-                <%=f.label :name%>
-                <%=f.text_field :name, class: 'form-control'%>
+                    <%=f.label :name%>
+                    <%=f.text_field :name, class: 'form-control'%>
 
-                <%=f.label :email%>
-                <%=f.email_field :email, class: 'form-control'%>
+                    <%=f.label :email%>
+                    <%=f.email_field :email, class: 'form-control'%>
 
-                <%=f.label :mobile%>
-                <%=f.telephone_field :mobile, class: 'form-control'%>
+                    <%=f.label :mobile%>
+                    <%=f.telephone_field :mobile, class: 'form-control'%>
 
-                <%=f.label :bio%>
-                <%= f.trix_editor :bio %>
+                    <%=f.label :bio%>
+                    <%= f.trix_editor :bio %>
 
-
-                <%=f.submit"Save changes",class:"btn btn-primary"%>
+                    <%=f.submit"Save changes",class:"btn btn-primary"%>
                 <%end%>
             </div>
             <div class="tab-pane fade" id="avatar" role="tabpanel" aria-labelledby="avatar-tab">
                 <%=form_for(@user) do |f|%>
-                <%= render 'shared/error_messages'%>
+                    <%= render 'shared/error_messages'%>
 
-                <%=gravatar_for(@user)%>
+                    <%=gravatar_for(@user)%>
 
-                <%=f.label "Update Gravatar Email"%>
-                <%=f.email_field (:gravatar), class: 'form-control'%>
-                <%=f.submit"Save changes",class:"btn btn-primary"%>
+                    <%=f.label "Update Gravatar Email"%>
+                    <%=f.email_field (:gravatar), class: 'form-control'%>
+                    <%=f.submit"Save changes",class:"btn btn-primary"%>
                 <%end%>
             </div>
             <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
                 <%=form_for(@user) do |f|%>
-                <%= render 'shared/error_messages'%>
+                    <%= render 'shared/error_messages'%>
 
-                <%=f.label :password%>
-                <%=f.password_field :password, class: 'form-control'%>
+                    <%=f.label :password%>
+                    <%=f.password_field :password, class: 'form-control'%>
 
-                <%=f.label :password_confirmation,"Confirmation"%>
-                <%=f.password_field :password_confirmation, class: 'form-control'%>
+                    <%=f.label :password_confirmation,"Confirmation"%>
+                    <%=f.password_field :password_confirmation, class: 'form-control'%>
 
-                <%=f.submit"Save changes",class:"btn btn-primary"%>
+                    <%=f.submit"Save changes",class:"btn btn-primary"%>
                 <%end%>
             </div>
             <div class="tab-pane fade" id="verification" role="tabpanel" aria-labelledby="verification-tab">
                 <%= form_for(@user.verification, url: new_user_verification_path(@user, @user.verification)) do |f|%>
-                <%= render 'shared/error_messages'%>
-                <%= f.hidden_field :user_id, :value => @user.id %>
+                    <%= render 'shared/error_messages'%>
+                    <%= f.hidden_field :user_id, :value => @user.id %>
 
-                <%= f.label "Name on card"%>
-                <%= f.text_field :name, value: @user.verification.name, class: 'form-control'%>
+                    <%= f.label "Name on card"%>
+                    <%= f.text_field :name, value: @user.verification.name, class: 'form-control'%>
 
-                <%= f.label "Card number"%>
-                <%= f.text_field :number, class: 'form-control'%>
+                    <%= f.label "Card number"%>
+                    <%= f.text_field :number, class: 'form-control'%>
 
-                <label for="verification_image" class="file-upload">
-                    <%= fa_icon "upload" %> Upload
-                </label>
-                <%= f.file_field :image %>
+                    <label for="verification_image" class="file-upload">
+                        <%= fa_icon "upload" %> Upload
+                    </label>
+                    <%= f.file_field :image %>
 
-                <% if @user.verification.image != nil%>
+                    <% if @user.verification.image != nil%>
 
-                <div id="verification-wrapper">
-                    <img src="<%= @user.verification.image%>">
-                </div>
+                        <div id="verification-wrapper">
+                            <img src="<%= @user.verification.image%>">
+                        </div>
 
-                <% end %>
-
-                <%=f.submit"Save changes",class:"btn btn-primary"%>
+                    <% end %>
+                    <%=f.submit"Save changes",class:"btn btn-primary"%>
                 <%end%>
             </div>
         </div>

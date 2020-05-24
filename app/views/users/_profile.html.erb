@@ -12,22 +12,22 @@
         <h4>Recent Posts</h4>
         <ul class="posts">
             <% if @posts != nil%>
-            <% @posts.limit(5).each do |post| %>
-            <li style="padding:10px;">
-                <div>
-                    <div class="row" style="max-width: 510px;">
-                        <b><%= link_to post.title, post %></b>
-                    </div>
-                    <div class="row">
-                        Views: <%= number_with_delimiter(post.views, :delimiter => ',') %> |
-                        Comments: <%= post.comment_count %> |
-                        <%= time_ago_in_words(post.created_at) %> ago
-                    </div>
-                </div>
-            </li>
-            <% end %>
+                <% @posts.limit(5).each do |post| %>
+                    <li style="padding:10px;">
+                        <div>
+                            <div class="row" style="max-width: 510px;">
+                                <b><%= link_to post.title, post %></b>
+                            </div>
+                            <div class="row">
+                                Views: <%= number_with_delimiter(post.views, :delimiter => ',') %> |
+                                Comments: <%= post.comment_count %> |
+                                <%= time_ago_in_words(post.created_at) %> ago
+                            </div>
+                        </div>
+                    </li>
+                <% end %>
             <% else %>
-            <p style="margin: 0 40%;">No Posts</p>
+                <p style="margin: 0 40%;">No Posts</p>
             <% end %>
         </ul>
     </div>
@@ -35,21 +35,21 @@
         <h4>Recent Comments</h4>
         <ul class="posts">
             <%if @comments != nil%>
-            <% @comments.limit(5).each do |comment| %>
-            <li style="padding:10px;">
-                <div style="padding:10px;">
-                    <div class="row" style="max-width: 510px;">
-                        <% post = Micropost.find_by_id(comment.get_parent_post)%>
-                        <b><%if post%><%= link_to post.title, post %><%end%></b>
-                    </div>
-                    <div class="row">
-                        "<em><%=comment.body%></em>"
-                    </div>
-                </div>
-            </li>
-            <% end %>
+                <% @comments.limit(5).each do |comment| %>
+                    <li style="padding:10px;">
+                        <div style="padding:10px;">
+                            <div class="row" style="max-width: 510px;">
+                                <% post = Micropost.find_by_id(comment.get_parent_post)%>
+                                <b><%if post%><%= link_to post.title, post %><%end%></b>
+                            </div>
+                            <div class="row">
+                                "<em><%=comment.body.html_safe%></em>"
+                            </div>
+                        </div>
+                    </li>
+                <% end %>
             <% else %>
-            <p style="margin: 0 40%;">No Comments</p>
+                <p style="margin: 0 40%;">No Comments</p>
             <% end %>
         </ul>
     </div>

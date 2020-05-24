@@ -1,7 +1,10 @@
 module UsersHelper
+
+  # Get gravater for user using gravatar email or
+  # normal email if seperate gravatar email is not set
   def gravatar_for(user, size = 200)
     email = user.gravatar
-    if (email == nil)
+    unless email
       email = user.email
     end
     gravatar_id = Digest::MD5::hexdigest(email.downcase)

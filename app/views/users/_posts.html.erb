@@ -1,19 +1,19 @@
 <h3>My Posts</h3>
 <ul class="posts">
     <% @posts.each do |post| %>
-    <li>
-        <div>
-            <div class="row" style="max-width: 510px;">
-                <b><%= link_to post.title, post %></b>
+        <li>
+            <div>
+                <div class="row" style="max-width: 510px;">
+                    <b><%= link_to post.title, post %></b>
+                </div>
+                <div class="row">
+                    Views: <%= number_with_delimiter(post.views, :delimiter => ',') %> |
+                    Comments: <%= post.comment_count %> |
+                    <%= time_ago_in_words(post.created_at) %> ago
+                </div>
+                <%= link_to "Delete post", post, method: :delete, data: {confirm: "You sure?"} %>
             </div>
-            <div class="row">
-                Views: <%= number_with_delimiter(post.views, :delimiter => ',') %> |
-                Comments: <%= post.comment_count %> |
-                <%= time_ago_in_words(post.created_at) %> ago
-            </div>
-            <%= link_to "Delete post", post, method: :delete, data: {confirm: "You sure?"} %>
-        </div>
-    </li>
+        </li>
     <% end %>
     <%= will_paginate @posts %>
 </ul>

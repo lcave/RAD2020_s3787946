@@ -1,47 +1,48 @@
 <%provide(:title,@user.name)%>
+
 <% @colsize = 12%>
 <div style="display:flex;min-height:360px;">
     <% if current_user == @user %>
-    <% @colsize = 9 %>
-    <div class="col-sm-3 vertical-nav">
-        <ul>
-            <li>
-                <a class="dropdown-item" href="?section"><%= fa_icon "user" %> My Profile</a>
-            </li>
-            <li>
-                <a class="dropdown-item" href="?section=posts"><%= fa_icon "columns" %> My Posts</a>
-            </li>
-            <li>
-                <a class="dropdown-item" href="?section=comments"><%= fa_icon "comment" %> My Comments</a>
-            </li>
-            <li>
-                <a class="dropdown-item" href="?section=replies"><%= fa_icon "reply" %> Replies to Me</a>
-            </li>
-            <li>
-                <a class="dropdown-item" href="?section=settings"><%= fa_icon "cog" %> Settings</a>
-            </li>
-        </ul>
-    </div>
+        <% @colsize = 9 %>
+        <div class="col-sm-3 vertical-nav">
+            <ul>
+                <li>
+                    <a class="dropdown-item" href="?section"><%= fa_icon "user" %> My Profile</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="?section=posts"><%= fa_icon "columns" %> My Posts</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="?section=comments"><%= fa_icon "comment" %> My Comments</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="?section=replies"><%= fa_icon "reply" %> Replies to Me</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="?section=settings"><%= fa_icon "cog" %> Settings</a>
+                </li>
+            </ul>
+        </div>
     <% end %>
     <div class="col-sm-<%=@colsize%>">
         <% if !params[:section].present? %>
-        <%= render 'profile'%>
-        <% end %>
+            <%= render 'profile'%>
+            <% end %>
 
-        <% if params[:section] == "posts" %>
-        <%= render 'posts'%>
-        <% end %>
+            <% if params[:section] == "posts" %>
+            <%= render 'posts'%>
+            <% end %>
 
-        <% if params[:section] == "comments" %>
-        <%= render 'comments'%>
-        <% end %>
+            <% if params[:section] == "comments" %>
+            <%= render 'comments'%>
+            <% end %>
 
-        <% if params[:section] == "replies" %>
-        <%= render 'replies'%>
-        <% end %>
+            <% if params[:section] == "replies" %>
+            <%= render 'replies'%>
+            <% end %>
 
-        <% if params[:section] == "settings" %>
-        <%= render 'edit' %>
+            <% if params[:section] == "settings" %>
+            <%= render 'edit' %>
         <% end %>
     </div>
 </div>
