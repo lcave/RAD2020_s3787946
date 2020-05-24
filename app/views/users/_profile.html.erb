@@ -3,7 +3,9 @@
     <h1>
         <%=@user.name%>
     </h1>
-    <h5 style="text-align:center;">Created <%= time_ago_in_words(@user.created_at) %> ago</h4>
+    <h5 style="text-align:center;">Created <%= time_ago_in_words(@user.created_at) %> ago</h5>
+    <% if @user.bio %><%= @user.bio.html_safe %><% end %>
+    <hr />
 </div>
 <div class="row">
     <div class="col-sm-1 posts-col">

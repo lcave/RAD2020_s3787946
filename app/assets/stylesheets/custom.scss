@@ -247,6 +247,15 @@ input {
   margin-left: 0;
 }
 
+.edit_user .trix-content {
+  max-width: 600px;
+  min-height: 100px;
+  margin-bottom: 20px;
+}
+.edit_user #trix-toolbar-1 {
+  max-width: 600px;
+}
+
 #verification-wrapper {
   max-height: 200px;
   max-width: 200px;

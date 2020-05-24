@@ -42,6 +42,10 @@
                 <%=f.label :mobile%>
                 <%=f.telephone_field :mobile, class: 'form-control'%>
 
+                <%=f.label :bio%>
+                <%= f.trix_editor :bio %>
+
+
                 <%=f.submit"Save changes",class:"btn btn-primary"%>
                 <%end%>
             </div>
