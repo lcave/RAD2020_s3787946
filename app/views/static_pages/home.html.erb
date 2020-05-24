@@ -78,7 +78,7 @@
 
 <section id="aside" class="col-sm-4">
     <section>
-        <h3>Recent Members</h3>
+        <h3>Recently Active Members</h3>
         <div class="row" id="recent-members">
             <% @users.where.not(last_login: [nil]).order(last_login: :desc).last(6).each do |user|%>
             <div class="recent-member">
