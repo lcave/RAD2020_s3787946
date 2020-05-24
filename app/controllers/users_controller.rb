@@ -48,10 +48,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def index
-    @users = User.where(activated: true).paginate(page: params[:page])
-  end
-
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = "User deleted"
