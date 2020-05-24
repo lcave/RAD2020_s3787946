@@ -80,10 +80,12 @@
     <section>
         <h3>Recent Members</h3>
         <div class="row" id="recent-members">
-            <% @users.order(created_at: :asc).last(6).each do |user|%>
+            <% @users.where.not(last_login: [nil]).order(last_login: :desc).last(6).each do |user|%>
             <div class="recent-member">
-                <%= gravatar_for(user, 30)%>
-                <%= link_to user.name, user %>
+                <a href="users/<%=user.id%>">
+                    <%= gravatar_for(user, 30)%>
+                    <%= user.name %>
+                </a>
             </div>
             <%end%>
         </div>

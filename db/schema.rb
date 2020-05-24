@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200524023027) do
+ActiveRecord::Schema.define(version: 20200524040005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20200524023027) do
     t.string "remember_digest"
     t.string "gravatar"
     t.string "bio"
+    t.datetime "last_login"
   end
 
   create_table "verifications", force: :cascade do |t|
