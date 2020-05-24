@@ -25,9 +25,9 @@ class MicropostsController < ApplicationController
   end
 
   def destroy
-    @post.destroy
+    Micropost.find(params[:id]).destroy
     flash[:success] = "Micropost deleted"
-    redirect_to root_path
+    redirect_back fallback_location: root_path
   end
 
   private

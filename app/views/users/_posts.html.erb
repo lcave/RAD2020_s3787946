@@ -11,6 +11,7 @@
                 Comments: <%= post.comment_count %> |
                 <%= time_ago_in_words(post.created_at) %> ago
             </div>
+            <%= link_to "Delete post", post, method: :delete, data: {confirm: "You sure?"} %>
         </div>
     </li>
     <% end %>
