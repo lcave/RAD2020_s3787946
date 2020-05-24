@@ -26,7 +26,7 @@ end
 topics = ["News", "A.I.", "V.R.", "RMIT", "Game", "Rails", "Go", "Web", "M.L", "Joke", "React", "Vue", "Node", "iOS", "AWS"]
 
 for topic in topics
-  rand(25).times do |n|
+  rand(5..15).times do |n|
     Micropost.create!(content: Faker::Lorem.paragraph(sentence_count: rand(20..60)),
                       user_id: users.sample.id,
                       title: Faker::Lorem.sentence(word_count: rand(2..15)), views: rand(2000), topic: topic)
