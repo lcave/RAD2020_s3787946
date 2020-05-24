@@ -21,8 +21,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-    @posts = Micropost.where(user_id: @user.id).paginate(page: params[:page], per_page: 20)
-    @comments = Comment.where(user_id: @user.id).paginate(page: params[:page], per_page: 20)
+    @posts = Micropost.where(user_id: @user.id).order("created_at DESC").paginate(page: params[:page], per_page: 20)
+    @comments = Comment.where(user_id: @user.id).order("created_at DESC").paginate(page: params[:page], per_page: 20)
     if @user == current_user
       ids = @comments.pluck(:id)
       @replies = Array.new

@@ -23,7 +23,7 @@
 
         <div class="collapse" id="commentCollapse">
             <%= form_for [@post, Comment.new] do |f| %>
-            <%= f.text_area :body, placeholder: "Add a comment" %><br />
+            <%= f.trix_editor :body, placeholder: "Add a comment" %><br />
             <%= f.hidden_field :user_id, :value => current_user.id %>
             <%= f.hidden_field :micropost_id, :value => @post.id %>
             <%= f.submit "Add Comment" %>

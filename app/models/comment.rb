@@ -1,7 +1,7 @@
 class Comment < ApplicationRecord
   belongs_to :commentable, polymorphic: true
   belongs_to :user
-  has_many :comments, as: :commentable
+  has_many :comments, as: :commentable, dependent: :destroy
 
   def parent
     post = Micropost.where(id: self.commentable_id).first
@@ -23,5 +23,13 @@ class Comment < ApplicationRecord
 
   def get_replies
     replies = self.comments
+  end
+
+  def author_name
+    if self.user_id == 0
+      return "Deleted"
+    else
+      return User.find_by_id(self.user_id).name
+    end
   end
 end

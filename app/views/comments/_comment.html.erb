@@ -1,6 +1,12 @@
 <li>
-    <b><%= link_to User.find_by_id(comment.user_id).name, User.find_by_id(comment.user_id)%></b><small> <%= time_ago_in_words(comment.created_at) %> ago</small><br>
-    <%= comment.body %> <br>
+    <b>
+        <% if comment.user_id == 0%>
+        <%= comment.author_name %>
+        <% else %>
+        <%= link_to comment.author_name, User.find_by_id(comment.user_id) %>
+        <% end %>
+    </b><small> <%= time_ago_in_words(comment.created_at) %> ago</small><br>
+    <%= comment.body.html_safe %> <br>
 
     <% if logged_in? %>
     <a data-toggle="collapse" href="#replyCollapse<%= comment.id %>" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -8,7 +14,7 @@
     </a>
     <div class="collapse" id="replyCollapse<%= comment.id %>">
         <%= form_for [comment, Comment.new] do |f| %>
-        <%= f.text_area :body, placeholder: "Add a Reply" %><br />
+        <%= f.text_area :body, placeholder: "Reply to comment"%><br />
         <%= f.hidden_field :user_id, :value => current_user.id %>
         <%= f.hidden_field :micropost_id, :value => @post.id %>
         <%= f.hidden_field :comment_id, :value => comment.id %>

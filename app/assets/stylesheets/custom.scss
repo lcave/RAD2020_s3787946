@@ -327,9 +327,6 @@ input {
 }
 
 .sticky-nav {
-  // position: -webkit-sticky;
-  // position: sticky;
-  // top: 60px;
   background-color: white;
   padding: 10px 10px 0 10px;
 }
@@ -341,7 +338,7 @@ input {
   padding-left: 0;
   li {
     background-color: white;
-    padding: 10px 0;
+    padding: 10px 10px;
     margin-bottom: 10px;
     border: 1px solid #61afc579;
     border-radius: 5px;
@@ -395,7 +392,7 @@ input {
 #comments-section {
   div {
     padding-top: 15px;
-    width: 50%;
+    width: 70%;
   }
   li {
     text-decoration: none;

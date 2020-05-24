@@ -9,10 +9,11 @@
                 </b>
             </div>
             <div class="row">
-                "<em><%=comment.body%></em>"
+                "<em><%=comment.body.html_safe%></em>"
             </div>
+            <%= link_to "Delete comment", comment, method: :delete, data: {confirm: "You sure?"} %>
         </div>
     </li>
     <% end %>
-    <%= will_paginate @posts %>
+    <%= will_paginate @comments %>
 </ul>

@@ -1,12 +1,13 @@
 class CommentsController < ApplicationController
   attr_accessor :commentable_id
-  before_action :find_commentable
+  before_action :correct_user, only: :destroy
 
   def new
     @comment = Comment.new
   end
 
   def create
+    find_commentable
     @comment = @commentable.comments.new comment_params
 
     if @comment.save
@@ -16,7 +17,18 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    Comment.find_by_id(params[:id]).destroy
+    redirect_back fallback_location: root_path
+  end
+
   private
+
+  def correct_user
+    @comment = Comment.find_by_id(params[:id])
+    @user = User.find_by_id(@comment.user_id)
+    redirect_to(root_url) unless current_user?(@user)
+  end
 
   def comment_params
     params.require(:comment).permit(:body, :user_id)
