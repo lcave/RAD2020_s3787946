@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
   def destroy
     comment = Comment.find_by_id(params[:id])
     count = comment.get_parent_post.comment_count
-    comment.get_parent_post.update(comment_count: count - 1)
+    comment.get_parent_post.update(comment_count: count - comment.chain_count)
     comment.destroy
     flash[:success] = "Comment deleted"
     redirect_back fallback_location: root_path

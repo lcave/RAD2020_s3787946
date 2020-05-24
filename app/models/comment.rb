@@ -32,4 +32,12 @@ class Comment < ApplicationRecord
       return User.find_by_id(self.user_id).name
     end
   end
+
+  def chain_count
+    count = 1
+    self.comments.each do |comment|
+      count += comment.chain_count
+    end
+    count
+  end
 end
