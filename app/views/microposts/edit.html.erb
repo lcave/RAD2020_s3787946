@@ -1,0 +1,11 @@
+<%= form_for( @post) do |f| %>
+<div style="width:50%;display:inline-block;">
+    <%=f.label :title%>
+    <%=f.text_field :title, class: 'form-control', :required => true %>
+</div>
+<div class="post-select" style="display: inline-block;">
+    <%= select("micropost", "topic", topics, { selected: "News"}) %>
+</div>
+<%= f.trix_editor :content, :required => true %>
+<%=f.submit"Update post",class:"btn btn-primary new-post"%>
+<% end %>

@@ -17,6 +17,21 @@ class MicropostsController < ApplicationController
     @post.update(views: @post.views + 1)
   end
 
+  def edit
+    @post = Micropost.find(params[:id])
+  end
+
+  def update
+    @post = Micropost.find(params[:id])
+    if @post.update_attributes(micropost_params)
+      flash[:success] = "Post updated"
+      redirect_to @post
+    else
+      flash[:failure] = "Something went wrong"
+      redirect_to root_path
+    end
+  end
+
   def index
   end
 

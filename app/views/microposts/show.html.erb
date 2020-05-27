@@ -13,6 +13,9 @@
             <%= @post.content.html_safe %>
         </div>
     </div>
+    <% if current_user == User.find_by_id(@post.user_id) %>
+        <%= link_to "Edit post", edit_micropost_path %>
+    <% end %>
     <div class="row" id="comments-section">
         <h3>Comments</h3>
         <% if logged_in?%>
