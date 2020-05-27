@@ -55,7 +55,10 @@ h2 {
   font-weight: normal;
   color: $gray-light;
   span {
-    margin: 0 10px;
+    margin-right: 10px;
+  }
+  span + span {
+    margin-left: 10px;
   }
 }
 
