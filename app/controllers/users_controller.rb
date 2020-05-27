@@ -47,7 +47,8 @@ class UsersController < ApplicationController
       flash[:success] = "Profile updated"
       redirect_to @user
     else
-      render "edit"
+      flash[:failure] = "Something went wrong"
+      redirect_to root_path
     end
   end
 
@@ -73,6 +74,9 @@ class UsersController < ApplicationController
 
   def correct_user
     @user = User.find(params[:id])
-    redirect_to(root_url) unless current_user?(@user)
+    unless current_user?(@user)
+      flash[:failure] = "You do not have permission to view this page"
+      redirect_to(root_url) 
+    end
   end
 end

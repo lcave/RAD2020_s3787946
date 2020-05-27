@@ -1,11 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  body: MyText
-  commentable_id: 1
-  commentable_type: MyString
-
 two:
-  body: MyText
-  commentable_id: 1
-  commentable_type: MyString
+  body: "Comment on post"
+  commentable_id: <%= ActiveRecord::FixtureSet.identify(:now) %>
+  commentable_type: "Micropost"
+  user_id: <%= ActiveRecord::FixtureSet.identify(:foo) %>
+
+twoChild:
+  body: "Comment on comment"
+  commentable_id: <%= ActiveRecord::FixtureSet.identify(:two) %>
+  commentable_type: "Micropost"
+  user_id: <%= ActiveRecord::FixtureSet.identify(:foo) %>
+
+twoChildChild:
+  body: "Comment on comment on comment"
+  commentable_id: <%= ActiveRecord::FixtureSet.identify(:twoChild) %>
+  commentable_type: "Micropost"
+  user_id: <%= ActiveRecord::FixtureSet.identify(:foo) %>

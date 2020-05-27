@@ -9,11 +9,10 @@ class CommentsController < ApplicationController
   def create
     find_commentable
     @comment = @commentable.comments.new comment_params
-
     if @comment.save
       redirect_back fallback_location: root_path
-      count = Micropost.find_by_id(params[:comment][:micropost_id]).comment_count
-      Micropost.find_by_id(params[:comment][:micropost_id]).update(comment_count: count + 1)
+      count = @comment.get_parent_post.comment_count
+      @comment.get_parent_post.update(comment_count: count + 1)
     end
   end
 

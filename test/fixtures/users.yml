@@ -2,11 +2,11 @@
 foo:
   name: Foo Bar
   email: foo@example.com
-  mobile: 0400000000
+  mobile: "0400000000"
   password_digest: <%= User.digest('password') %>
 
 bar:
   name: Bar Bar
   email: bar@example.com
-  mobile: 0400000000
+  mobile: "0400000001"
   password_digest: <%= User.digest('password') %>

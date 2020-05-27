@@ -3,7 +3,10 @@ require "test_helper"
 class MicropostTest < ActiveSupport::TestCase
   def setup
     @user = users(:foo)
-    @micropost = @user.microposts.build(title: "A post", content: "Lorem ipsum")
+    @micropost = microposts(:now)
+    @comment = comments(:two)
+    @reply = @comment.comments.build(body: "Reply to comment", user_id: @user.id)
+    @reply.save
   end
 
   test "should be valid" do
@@ -25,7 +28,23 @@ class MicropostTest < ActiveSupport::TestCase
     assert_not @micropost.valid?
   end
 
-  test "most recent post should be first" do
-    assert_equal microposts(:now), Micropost.first
+  test "Micropost should be created" do
+    assert_difference "Micropost.count", 1 do
+      post = Micropost.create!(title: "test",
+                               user_id: ActiveRecord::FixtureSet.identify(:foo),
+                               content: "Lorem ipsum")
+    end
+  end
+
+  test "Micropost should be deleted" do
+    assert_difference "Micropost.count", -1 do
+      @micropost.destroy
+    end
+  end
+
+  test "deleting post should delete comments" do
+    assert_difference "Comment.count", -2 do
+      @micropost.destroy
+    end
   end
 end
