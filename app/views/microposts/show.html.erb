@@ -1,11 +1,17 @@
 <%provide(:title, @post.title)%>
 <div class="container post">
-    <div class="row">
+    <div class="row" style="padding-left:30px;">
         <h1>
             <%=@post.title%>
         </h1>
         <h2>
             <%= link_to @post.user.name, @post.user %>
+        </h2>
+        <h2>
+            <span> <%= time_ago_in_words(@post.created_at) %> ago </span> |
+            <span> <%= @post.topic %> </span> |
+            <span> <%= fa_icon "eye" %> <%= @post.views %> </span> |
+            <span> <%= fa_icon "comment" %> <%= @post.comment_count %> </span>
         </h2>
     </div>
     <div class="row">
@@ -14,7 +20,7 @@
         </div>
     </div>
     <% if current_user == User.find_by_id(@post.user_id) %>
-        <%= link_to "Edit post", edit_micropost_path %>
+    <%= link_to "Edit post", edit_micropost_path %>
     <% end %>
     <div class="row" id="comments-section">
         <h3>Comments</h3>
