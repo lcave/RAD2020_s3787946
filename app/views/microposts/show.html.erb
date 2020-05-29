@@ -1,13 +1,13 @@
 <%provide(:title, @post.title)%>
 <div class="container post">
     <div class="row" style="padding-left:30px;">
-        <h1>
+        <h1 style="text-align:left;">
             <%=@post.title%>
         </h1>
-        <h2>
+        <h2 style="text-align:left;">
             <%= link_to @post.user.name, @post.user %>
         </h2>
-        <h2>
+        <h2 style="text-align:left;">
             <span> <%= time_ago_in_words(@post.created_at) %> ago </span> |
             <span> <%= @post.topic %> </span> |
             <span> <%= fa_icon "eye" %> <%= @post.views %> </span> |

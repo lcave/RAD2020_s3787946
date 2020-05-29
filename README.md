@@ -6,11 +6,11 @@ Highest level attempted: HD
 
 Team members:
 
-- Luca Cave: s3787946   ~28hrs*
+- Luca Cave: s3787946   ~29hrs*
 
 *   Breakdown:
 
-Development - 18 hrs
+Development - 19 hrs
 Reading - 5 hrs 
 Testing - 5 hrs
 
@@ -18,6 +18,15 @@ Testing - 5 hrs
 Due to the overlap between Michael Hartl's tutorial and some areas of the assignment, an additional 10hrs 
 should be added to the total to include the work done for that tutorial which was easily reused for this 
 assignment. 
+
+NOTES:
+- The faker gem was used to generate seed data
+- The trix gem was used for rich text editing. This functionality is included in rails 6 so I felt it was 
+  ok to use the gem here. This could also be done by manually adding the trix javascript and css files to 
+  the project and using the relevant html tags.
+- Despite trying the fixes posted on the discussion board, I was unable to get sendgrid to work with my Heroku
+  account. The password resets test demonstrates that password reset functionality is included and works as 
+  intended. 
 
 
 https://still-ridge-50837.herokuapp.com/
