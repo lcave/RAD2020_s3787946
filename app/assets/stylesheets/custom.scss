@@ -309,16 +309,14 @@ input {
 
 #recent-members {
   display: flex;
+  flex-wrap: wrap;
   margin: 0;
   padding: 10px;
 }
 
 .recent-member {
   height: 50px;
-}
-
-.recent-member + .recent-member {
-  margin-left: 20px;
+  margin: 10px;
 }
 
 #main {
