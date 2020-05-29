@@ -40,13 +40,6 @@ Latest log:
 -----> Removing BUNDLED WITH version in the Gemfile.lock
 -----> Compiling Ruby/Rails
 -----> Using Ruby version: ruby-2.6.6
-###### WARNING:
-       You have the `.bundle/config` file checked into your repository
-        It contains local state like the location of the installed bundle
-        as well as configured git local gems, and other settings that should
-       not be shared between multiple checkouts of a single repo. Please
-       remove the `.bundle/` folder from your repo and add it to your `.gitignore` file.
-       https://devcenter.heroku.com/articles/bundler-configuration
 -----> Installing dependencies using bundler 2.0.2
        Running: bundle install --without development:test --path vendor/bundle --binstubs vendor/bundle/bin -j4 --deployment
        The dependency tzinfo-data (>= 0) will be unused by any of the platforms Bundler is installing for. Bundler is installing for ruby but the dependency is only for x86-mingw32, x86-mswin32, x64-mingw32, java. To add those platforms to the bundle, run `bundle lock --add-platform x86-mingw32 x86-mswin32 x64-mingw32 java`.
@@ -122,9 +115,9 @@ Latest log:
        Using turbolinks 5.2.1
        Using uglifier 4.2.0
        Bundle complete! 30 Gemfile dependencies, 71 gems now installed.
-       Gems in the groups development, test and production were not installed.
+       Gems in the groups development and test were not installed.
        Bundled gems are installed into `./vendor/bundle`
-       Bundle completed (0.49s)
+       Bundle completed (0.51s)
        Cleaning up the bundler cache.
 -----> Installing node-v10.15.3-linux-x64
 -----> Detecting rake tasks
@@ -132,30 +125,20 @@ Latest log:
        Running: rake assets:precompile
        Yarn executable was not detected in the system.
        Download Yarn at https://yarnpkg.com/en/docs/install
-       I, [2020-05-27T14:15:14.120085 #280]  INFO -- : Writing /tmp/build_4e9636f875b10fa06922a924b6a890f0/public/assets/application-4d283cb828b956f4d5b3c8a74502aa4f9b45af2ed2070971cc18cb201c769aa7.css
-       I, [2020-05-27T14:15:14.120922 #280]  INFO -- : Writing /tmp/build_4e9636f875b10fa06922a924b6a890f0/public/assets/application-4d283cb828b956f4d5b3c8a74502aa4f9b45af2ed2070971cc18cb201c769aa7.css.gz
-       Asset precompilation completed (10.18s)
+       Asset precompilation completed (2.78s)
        Cleaning assets
        Running: rake assets:clean
-       I, [2020-05-27T14:15:16.104284 #288]  INFO -- : Removed application-68a0c4441d9a685d14fa83fd13e8e145ed3f55c411d48e28ac75e1fd2961365e.css
 -----> Detecting rails configuration
 ###### WARNING:
        You have not declared a Ruby version in your Gemfile.
        To set your Ruby version add this line to your Gemfile:
        ruby '2.6.6'
        # See https://devcenter.heroku.com/articles/ruby-versions for more information.
-###### WARNING:
-       You have the `.bundle/config` file checked into your repository
-        It contains local state like the location of the installed bundle
-        as well as configured git local gems, and other settings that should
-       not be shared between multiple checkouts of a single repo. Please
-       remove the `.bundle/` folder from your repo and add it to your `.gitignore` file.
-       https://devcenter.heroku.com/articles/bundler-configuration
 -----> Discovering process types
        Procfile declares types     -> web
        Default types for buildpack -> console, rake
 -----> Compressing...
        Done: 44M
 -----> Launching...
-       Released v50
+       Released v52
        https://still-ridge-50837.herokuapp.com/ deployed to Heroku
