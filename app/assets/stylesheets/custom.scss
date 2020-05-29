@@ -11,6 +11,22 @@ $gray-medium-light: #eaeaea;
   box-sizing: border-box;
 }
 
+$News: #3b608c;
+$Joke: #550000;
+$AI: #4585c0;
+$VR: #008810;
+$RMIT: #a80000;
+$Game: #8c007b;
+$Rails: #b90058;
+$Go: #029ca5;
+$Web: #363636;
+$ML: #203942;
+$React: #0593e3;
+$Vue: #438148;
+$Node: #1a785b;
+$IOS: #aaac5a;
+$AWS: #dfbd00;
+
 /* universal */
 
 body {
@@ -427,7 +443,6 @@ input {
       display: inline;
       padding-top: 0;
       padding: 0;
-      width: auto;
     }
   }
 }
@@ -545,50 +560,50 @@ h5 {
 }
 
 #News {
-  background-color: #3b608c;
+  background-color: $News;
 }
 #Joke {
-  background-color: #550000;
+  background-color: $Joke;
 }
 #A\.I\. {
-  background-color: #4585c0;
+  background-color: $AI;
 }
 #V\.R\. {
-  background-color: #008810;
+  background-color: $VR;
 }
 #RMIT {
-  background-color: #a80000;
+  background-color: $RMIT;
 }
 #Game {
-  background-color: #8c007b;
+  background-color: $Game;
 }
 #Rails {
-  background-color: #b90058;
+  background-color: $Rails;
 }
 #Go {
-  background-color: #029ca5;
+  background-color: $Go;
 }
 #Web {
-  background-color: #363636;
+  background-color: $Web;
 }
 #M\.L {
-  background-color: #203942;
+  background-color: $ML;
 }
 #React {
-  background-color: #0593e3;
+  background-color: $React;
 }
 #Vue {
-  background-color: #438148;
+  background-color: $Vue;
 }
 #Node {
-  background-color: #1a785b;
+  background-color: $Node;
 }
 #iOS {
-  background-color: #aaac5a;
+  background-color: $IOS;
 }
 
 #AWS {
-  background-color: #dfbd00;
+  background-color: $AWS;
 }
 
 .pagination > .active > a,
